@@ -4,8 +4,8 @@ MAINTAINER Jitendra Adhikari <jiten.adhikary@gmail.com>
 
 ENV \
   XHPROF_VERSION=5.0.1\
-  ZEPHIR_VERSION=1.3.3 \
-  PHALCON_VERSION=4.0.0 \
+  ZEPHIR_VERSION=1.5.0 \
+  PHALCON_VERSION=5.0.0RC3 \
   SWOOLE_VERSION=4.6.7 \
   SWOOLE_ASYNC_VERSION=4.5.5 \
   LD_PRELOAD=/usr/lib/preloadable_libiconv.so \

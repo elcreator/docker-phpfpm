@@ -1,20 +1,22 @@
 ## docker-phpfpm
 
-[![Docker build](https://github.com/adhocore/docker-phpfpm/actions/workflows/build.yml/badge.svg)](https://github.com/adhocore/docker-phpfpm/actions/workflows/build.yml)
+[![Docker build](https://github.com/elcreator/docker-phpfpm/actions/workflows/build.yml/badge.svg)](https://github.com/elcreator/docker-phpfpm/actions/workflows/build.yml)
 [![Donate 15](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square&label=donate+15)](https://www.paypal.me/ji10/15usd)
 [![Donate 25](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square&label=donate+25)](https://www.paypal.me/ji10/25usd)
 [![Donate 50](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square&label=donate+50)](https://www.paypal.me/ji10/50usd)
-[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Production+ready+PHP7+and+PHP8+docker+images+with+plenty+extensions&url=https://github.com/adhocore/docker-phpfpm&hashtags=docker,dockerimage,php7,php8,phpext)
+[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Production+ready+PHP7+and+PHP8+docker+images+with+plenty+extensions&url=https://github.com/elcreator/docker-phpfpm&hashtags=docker,dockerimage,php7,php8,phpext)
 
 
 Docker PHP FPM with lean alpine base. The download size is just about ~150MB.
 
-It contains PHP8.1.7 and PHP8.0.20 with plenty of common and useful extensions.
+**Forked from adhocore/phpfpm to support the latest Phalcon with minimal setup only.**
 
-You can also continue using [`adhocore/phpfpm:7.4`](./7.4.Dockerfile) for PHP7.4.30.
+It contains PHP8.0.20 with plenty of common and useful extensions.
+
+You can also continue using [`elcreator/phpfpm:7.4`](./7.4.Dockerfile) for PHP7.4.30.
 
 If you are looking for a complete local development stack then check
-[`adhocore/lemp`](https://github.com/adhocore/docker-lemp).
+[`elcreator/lemp`](https://github.com/elcreator/docker-lemp).
 
 It comes prepackaged with `composer` - both v1 and v2.
 Use `composer2` command for v2 and `composer` for v1.
@@ -23,16 +25,16 @@ Use `composer2` command for v2 and `composer` for v1.
 To pull latest image:
 
 ```sh
-docker pull adhocore/phpfpm:8.0
+docker pull elcreator/phpfpm:8.0
 
 # or for alpine 3.13
-docker pull adhocore/phpfpm:8.0-alp3.13
+docker pull elcreator/phpfpm:8.0-alp3.13
 
 # or for php 7.4
-docker pull adhocore/phpfpm:7.4
+docker pull elcreator/phpfpm:7.4
 
 # or for php 7.4 on alpine 3.13
-docker pull adhocore/phpfpm:7.4-alp3.13
+docker pull elcreator/phpfpm:7.4-alp3.13
 
 ```
 
@@ -43,7 +45,7 @@ version: '3'
 
 services:
   phpfpm:
-    image: adhocore/phpfpm:8.0
+    image: elcreator/phpfpm:8.0
     container_name: phpfpm
     volumes:
       - ./path/to/your/app:/var/www/html
@@ -57,38 +59,9 @@ services:
 
 ### Extensions
 
-#### PHP8.1
-
-The following PHP extensions are installed in `adhocore/phpfpm:8.1`:
-
-```
-Total: 80
-- apcu              - ast               - bcmath            - bz2
-- calendar          - core              - ctype             - curl
-- date              - dom               - ds                - ev
-- exif              - fileinfo          - filter            - ftp
-- gd                - gettext           - gmp               - grpc
-- hash              - iconv             - igbinary          - imap
-- intl              - json              - ldap              - libxml
-- lzf               - mbstring          - memcached         - mongodb
-- msgpack           - mysqli            - mysqlnd           - oauth
-- openssl           - pcntl             - pcov              - pcre
-- pdo               - pdo_mysql         - pdo_pgsql         - pdo_sqlite
-- pgsql             - phar              - posix             - pspell
-- psr               - rdkafka           - readline          - redis
-- reflection        - session           - shmop             - simplexml
-- soap              - sockets           - sodium            - spl
-- sqlite3           - standard          - swoole            - sysvmsg
-- sysvsem           - sysvshm           - tidy              - tokenizer
-- uuid              - xdebug            - xhprof            - xml
-- xmlreader         - xmlwriter         - xsl               - yaf
-- yaml              - zend opcache      - zip               - zlib
-```
-
-
 #### PHP8.0
 
-The following PHP extensions are installed in `adhocore/phpfpm:8.0`:
+The following PHP extensions are installed in `elcreator/phpfpm:8.0`:
 
 ```
 Total: 78
@@ -116,7 +89,7 @@ Total: 78
 
 #### PHP7.4
 
-The following PHP extensions are installed in `adhocore/phpfpm:7.4`:
+The following PHP extensions are installed in `elcreator/phpfpm:7.4`:
 
 ```
 Total: 85
@@ -151,13 +124,13 @@ Read more about
 ### Production Usage
 
 For production you may want to get rid of some extensions that are not really required.
-In such case, you can build a custom image on top `adhocore/phpfpm:8.0` like so:
+In such case, you can build a custom image on top `elcreator/phpfpm:8.0` like so:
 
 ```Dockerfile
-FROM adhocore/phpfpm:8.0
+FROM elcreator/phpfpm:8.0
 
 # Disable extensions you won't need. You can add as much as you want separated by space.
 RUN docker-php-ext-disable xdebug pcov ldap
 ```
 
-> `docker-php-ext-disable` is shell script available in `adhocore/phpfpm:8.0` only and not in official PHP docker images.
+> `docker-php-ext-disable` is shell script available in `elcreator/phpfpm:8.0` only and not in official PHP docker images.

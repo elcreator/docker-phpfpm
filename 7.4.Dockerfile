@@ -1,4 +1,4 @@
-FROM php:7.4.30-fpm-alpine3.15
+FROM php:7.4-fpm-alpine
 
 MAINTAINER Jitendra Adhikari <jiten.adhikary@gmail.com>
 
@@ -9,8 +9,7 @@ ENV \
   SWOOLE_VERSION=4.6.7 \
   SWOOLE_ASYNC_VERSION=4.5.5 \
   LD_PRELOAD=/usr/lib/preloadable_libiconv.so \
-  PECL_EXTENSIONS="apcu ast ds ev grpc hrtime igbinary imagick lzf lua mongodb msgpack oauth pcov psr rdkafka redis \
-    ssh2-1.2 uuid xdebug xlswriter yaf yaml" \
+  PECL_EXTENSIONS="apcu psr xdebug" \
   PECL_BUNDLE="memcached event" \
   PHP_EXTENSIONS="bcmath bz2 calendar exif gd gettext gmp imap intl ldap mysqli pcntl pdo_mysql pgsql pdo_pgsql \
     soap sockets swoole sysvshm sysvmsg sysvsem tidy zip zephir_parser"
